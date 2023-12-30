@@ -1,31 +1,29 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://65202948906e276284c41eea.mockapi.io/";
+axios.defaults.baseURL = "https://backend-car-catalog.onrender.com";
 
-export const fetchCars = createAsyncThunk("cars/fetchAll", async (_, thunkAPI) => {
-    try {
-        const response = await axios.get('/advert');
+export const fetchCars = createAsyncThunk("/cars", async (_, thunkAPI) => {
+  try {
+    const response = await axios.get("/cars");
     return response.data;
-    } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-    }
-})
-
-
-export const fetchCarsByPage = createAsyncThunk(
-  "adverts/fetchCarsByPage",
-  async (page, thunkAPI) => {
-    try {
-      const response = await axios.get("/advert", {
-        params: { page: page, limit: 8 },
-      });
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
+  } catch (error) {
+    console.log("Non found catalog", error);
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
+
+
+export const fetchCarsByPage = createAsyncThunk("/cars", async (page, thunkAPI) => {
+  try {
+    const response = await axios.get("/cars", {
+      params: { page: page, limit: 4 },
+    });
+    return response.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});
 
 
 

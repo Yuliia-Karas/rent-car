@@ -1,0 +1,13 @@
+{
+    "id": "id",
+    "img": "defaultImg",
+    "make":"brand",
+    "model":"car model",
+    "year": "year of issue",
+    "rentalPrice": "price per hour",
+    "address": "address of rental company",
+    "rentalCompany":"name of rental company",
+    "type": "premium classic econom",
+    "mileage": "mileage",
+    "functionalities":"mehanic auto gybryd gas electro"
+}

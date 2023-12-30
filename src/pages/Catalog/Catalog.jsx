@@ -1,7 +1,6 @@
-import  {useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCars } from "../../redux/selectors";
-
 
 import { CatalogPage } from "../OldCatalog/OldCatalog.styled";
 
@@ -25,41 +24,39 @@ import {
   ImgContaiter,
 } from "../../components/AdvertisementCard/AdvertisementCard.styled";
 import Button from "../../components/Button/Button";
-import { fetchCars,fetchCarsByPage } from "../../redux/operations";
+import { fetchCars, fetchCarsByPage } from "../../redux/operations";
 
 export default function Catalog() {
   const { items, isLoading, error } = useSelector(getCars);
   const [page, setPage] = useState(1);
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchCars());
+  }, [dispatch]);
 
-   useEffect(() => {
-     dispatch(fetchCars());
-   }, [dispatch]);
-  
- useEffect(() => {
-   dispatch(fetchCarsByPage(page));
-  
- }, [dispatch, page]);
-  
+  useEffect(() => {
+    dispatch(fetchCarsByPage(page));
+  }, [dispatch, page]);
+
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
   if (isLoading) {
-    return   <Loader />;
+    return <Loader />;
   }
 
   if (error) {
     return "Error" + error;
   }
 
- 
-
   return (
     <div>
       <CatalogPage>
-        {items.map(
+        {items &&
+          Array.isArray(items) &&
+          items.map(
             ({
               id,
               img = defaultImg,
@@ -112,11 +109,7 @@ export default function Catalog() {
             }
           )}
       </CatalogPage>
-      
-        <Button onClick={handleLoadMore}>Load more</Button>
-      
-      {/* <Button /> */}
+      <Button onClick={handleLoadMore}>Load more</Button>
     </div>
   );
 }
-
