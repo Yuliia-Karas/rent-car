@@ -1,26 +1,39 @@
 import { Outlet } from "react-router-dom";
-import {  Button, Toolbar } from "@mui/material";
-import { Nav,Bar } from "./Layout.styled";
+import {   Toolbar } from "@mui/material";
+import { Nav, Bar, StyledButton, Burger } from "./Layout.styled";
 
+import IconButton from "@mui/material/IconButton";
+
+ const handleLogin = () => {
+   console.log("Hello world!");
+ };
+ 
 export default function Layout() {
     return (
       <div>
         <Bar position="static">
           <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={handleLogin}
+            >
+              <Burger />
+            </IconButton>
+
             <Nav to="/">
-              <Button variant="contained">Home</Button>
+              <StyledButton variant="contained">Home</StyledButton>
             </Nav>
 
             <Nav to="/catalog">
-              <Button variant="contained">Catalog</Button>
+              <StyledButton variant="contained">Catalog</StyledButton>
             </Nav>
 
-            {/* <Nav to="/oldcatalog">
-              <Button variant="contained">Old Catalog</Button>
-            </Nav> */}
-
             <Nav to="/favorites">
-              <Button variant="contained">Favorites</Button>
+              <StyledButton variant="contained">Favorites</StyledButton>
             </Nav>
           </Toolbar>
         </Bar>{" "}

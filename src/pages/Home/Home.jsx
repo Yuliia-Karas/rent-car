@@ -10,7 +10,7 @@ export default function Home() {
     <div>
       <ImageContainer>
         <img src={bkg} alt="Background"></img>
-        <Slogan>Unlock Your Journey: Rent the Freedom of the Road!</Slogan>
+        <Slogan>Unlock Your Journey:<br></br> Rent the Freedom of the Road!</Slogan>
       </ImageContainer>
     </div>
   );
