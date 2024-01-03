@@ -4,6 +4,8 @@ import { AppBar, Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 import MenuIcon from "@mui/icons-material/Menu";
+import List from "@mui/material/List";
+
 
 export const Nav = styled(NavLink)`
   display: inline-block;
@@ -36,6 +38,12 @@ export const Bar = styled(AppBar)`
 `;
 
 export const Burger = styled(MenuIcon)`
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const BurgerList = styled(List)`
   @media (min-width: 768px) {
     display: none;
   }
