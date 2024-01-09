@@ -10,7 +10,7 @@ export const Card = styled.div`
 
 export const Image = styled.img`
   width: 290px;
-  height: 268px;
+  height: auto;
   border-radius: 5%;
   position: relative;
 `;
@@ -101,4 +101,5 @@ export const Heart = styled.img`
 
 export const ImgContaiter = styled.div`
   position: relative;
+  height: 210px;
 `;
